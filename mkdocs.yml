@@ -1,1 +1,5 @@
-site_name: My Docs
+site_name: Lbocms
+pages:
+- [index.md, Home]
+- [s3.md, Configuring Amazon s3 for upload hosting]
+theme: readthedocs
