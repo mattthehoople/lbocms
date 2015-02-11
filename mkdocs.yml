@@ -1,5 +1,12 @@
 site_name: Lbocms
 pages:
-- [index.md, Home]
-- [s3.md, Configuring Amazon s3 for upload hosting]
+- [index.md, Workflow]
+- [getting_started.md, Getting Started]
+- [cms.md, The Content Manegement System]
+- [integration.md, Integration]
+- [seo.md, SEO]
+- [users.md, Users]
+- [s3.md, Upload hosting]
+- [licensing.md, Licensing]
+- [advanced.md, Advanced Integrations]
 theme: readthedocs
