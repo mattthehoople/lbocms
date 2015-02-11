@@ -2,7 +2,7 @@ site_name: Lbocms
 pages:
 - [index.md, Workflow]
 - [getting_started.md, Getting Started]
-- [cms.md, The Content Manegement System]
+- [cms.md, The Content Management System]
 - [integration.md, Integration]
 - [seo.md, SEO]
 - [users.md, Users]
