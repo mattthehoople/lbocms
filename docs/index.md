@@ -15,4 +15,4 @@ You come here and try this. We say it's easy. But easy for who? We say you just 
 
 So let's work through it and see. Shall we?
 
-- [Getting Started]
+- [Getting Started](getting_started/)
