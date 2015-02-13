@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Upload hosting - Lbocms</title>
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script>
+
+  <style>
+    body {font-size: 90%;}
+    pre, code {font-size: 100%;}
+    h3, h4, h5, h6 {color: #2980b9; font-weight: 300}
+  </style> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Lbocms</a>
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      <ul class="current">
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../getting_started">Getting Started</a>
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../workflow">workflow.md</a>
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../cms">The Content Management System</a>
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../integration">Integration</a>
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../seo">SEO</a>
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../users">Users</a>
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 current">
+                <a class="current" href=".">Upload hosting</a>
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../licensing">Licensing</a>
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../advanced">Advanced Integrations</a>
+            </li>
+        
+
+    
+</ul>
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="icon icon-reorder"></i>
+        <a href=".."></a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    <li>Upload hosting</li>
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              <h1 id="amazon-s3">Amazon s3</h1>
+<p>Amazon s3 is currently the only supported way of hosting uploaded content on lbocms. It's very cheap and easy to use, but there's a few steps required to configure it for first use. This section will tell you how.</p>
+<h2 id="1-sign-up-for-s3">1. Sign up for s3</h2>
+<p>Simply head on over to <a href="http://aws.amazon.com/s3">amazon</a> and sign up. All you need to know to create an account is <a href="http://docs.aws.amazon.com/AmazonS3/latest/gsg/SigningUpforS3.html">here</a>.</p>
+<h2 id="2-create-a-bucket">2. Create a bucket</h2>
+<p>This is the folder in which all your uploads will live. You can use one bucket for all of your sites if you wish, but this means users will have write/delete permissions for images/files belonging to other sites, so it's best to create a bucket per site with it's own user.</p>
+<p>Amazon's own documentation is clear and thorough for creating a bucket. You can read it <a href="http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html">here</a>.</p>
+<p>The pricing structure for s3 can be complex. It's a combination of charges for the amount of data stored and how often that data in accessed. Figuring out your likely usage depends on the size of your clients and you should take this into account when deciding how much to charge them. Despite this complexity s3 is actually very cheap, you only pay for what you use and you get a big chunk free for your first year, so unless your budget is zero dollars it shouldn't be an issue. Full details of pricing can be found <a href="http://aws.amazon.com/s3/pricing/">here</a>.</p>
+<h2 id="3-sort-your-permissions">3. Sort your permissions</h2>
+<p>There are two types of permissions you need to set up on your bucket - Access control and CORS.</p>
+<p>Access control tells amazon what types of users can do what on your bucket. Everyone must be able to read the contents of your bucket in order for the files to be seen on your site. Only you should be able to put things in your bucket.</p>
+<p>It's a good idea to create a user solely for lbocms. Do this by heading to <a href="https://console.aws.amazon.com/iam/home#users">https://console.aws.amazon.com/iam/home#users</a> once logged into aws and clicking the add user button. Add a username (e.g. "lbocms") and take a note of both the Access Key ID and Secret Access Key.</p>
+<p>Head back to s3 in the console, then click into your bucket and click the Properties tab. Then click Permissions. Add a permission with the Grantee value of "Everyone" and only the "List" checkbox checked. Then add a permission for "Authenticated Users" and check the boxes for "List" and "Upload/Delete". Save your changes.</p>
+<p>Next you need to add CORS configuration for your bucket. This allows the lbocms app to post files to your bucket. To set this up, simply click the "Edit CORS Configuration" link and cut and paste the following into the text field...</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"&gt;
+    &lt;CORSRule&gt;
+        &lt;AllowedOrigin&gt;https://app-lbocms.rhcloud.com&lt;/AllowedOrigin&gt;
+        &lt;AllowedMethod&gt;HEAD&lt;/AllowedMethod&gt;
+        &lt;AllowedMethod&gt;PUT&lt;/AllowedMethod&gt;
+        &lt;AllowedMethod&gt;DELETE&lt;/AllowedMethod&gt;
+        &lt;AllowedMethod&gt;POST&lt;/AllowedMethod&gt;
+        &lt;AllowedMethod&gt;GET&lt;/AllowedMethod&gt;
+        &lt;MaxAgeSeconds&gt;1&lt;/MaxAgeSeconds&gt;
+        &lt;AllowedHeader&gt;*&lt;/AllowedHeader&gt;
+    &lt;/CORSRule&gt;
+&lt;/CORSConfiguration&gt;
+</code></pre>
+<p>Save your changes. You're now done with s3.</p>
+<h2 id="4-add-your-s3-details-to-the-lbocms-app">4. Add your s3 details to the lbocms app</h2>
+<p>Finally you need to tell us your details so we can upload your user's files straight into your bucket. We keep your details safe and sound and all the usual security measures apply, so you've no need to worry. To be extra safe you only use the details of the user you created in step 3 above. This is just common sense.</p>
+<p>Login to lbocms, then assuming your site is already created, click the button in the "Settings" column for your chosen site.</p>
+<p>Add your details. These should be the name of your bucket, the region it's hosted in and the two keys you copied in step 3. If you can't remember which region you chose, look at your bucket's properties in the s3 console and look the name up <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">here</a>. It's the "Region" value we're after, e.g. "us-east-1".</p>
+<p>Save your settings, then click the "Test" button to see if everything is okay. This button will upload a tiny (1px by 1px) gif up to your bucket to test it works. If you've followed all the steps above all should be good. If not drop us an email and we'll help you out.</p>
+<p>Your now ready to let your users upload files and images through the content management console. Once uploaded the API will return the s3 url for the file or image so you can reference it directly from your webpage.</p>
+
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../licensing" class="btn btn-neutral float-right" title="Licensing"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../users" class="btn btn-neutral" title="Users"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    <!-- Copyright etc -->
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        
+      <span><a href="../users" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      <span style="margin-left: 15px"><a href="../licensing" style="color: #fcfcfc">Next &raquo;</a></span>
+    </span>
+</div>
+</body>
+</html>
