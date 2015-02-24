@@ -8,7 +8,7 @@ The hierarchy goes as follows...
     site
       |__sections
               |__items
-                    |__feilds
+                    |__fields
                           |__validators
                           |
                           |__values
